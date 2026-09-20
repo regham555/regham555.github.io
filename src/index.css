@@ -934,6 +934,89 @@ h1 {
   margin: 0;
 }
 
+.timeline-link {
+  margin-top: 0.55rem;
+}
+
+.timeline-link a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.photo-section {
+  margin-top: 2.25rem;
+}
+
+.photo-section h2 {
+  margin: 0;
+  scroll-margin-top: 7rem;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.photo-empty {
+  margin-top: 1.5rem;
+  padding: 1.35rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+}
+
+.photo-empty p {
+  margin: 0;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.photo-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--well) 45%, transparent);
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  background: var(--well);
+}
+
+.photo-card div {
+  padding: 0.85rem 0.95rem 1rem;
+}
+
+.photo-place {
+  margin: 0;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.05rem;
+}
+
+.photo-card time {
+  display: block;
+  margin: 0.15rem 0 0.35rem;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.photo-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
 .stack {
   display: flex;
   flex-wrap: wrap;
@@ -992,6 +1075,10 @@ h1 {
     grid-column: 2;
     grid-row: 2;
     text-align: left;
+  }
+
+  .timeline-item--no-when .timeline-copy {
+    grid-row: 1;
   }
 
   .timeline-item:nth-child(odd) .stack {

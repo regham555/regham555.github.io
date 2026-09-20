@@ -27,6 +27,17 @@ const entries = [
     logo: '/logos/sbu.png',
   },
   {
+    company: 'Career break',
+    role: 'Trekking and exploring',
+    start: '2025-01',
+    end: '2026-08',
+    logo: '/logos/trek.svg',
+    note: 'Took time between work and graduate school to hike and travel.',
+    href: '/photos',
+    hrefLabel: 'Photos',
+    hideWhen: true,
+  },
+  {
     company: 'Outlier AI',
     role: 'AI Coding Evaluator (RLHF)',
     start: '2023-09',
