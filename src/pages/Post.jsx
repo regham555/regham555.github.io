@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import BackLink from '../BackLink.jsx'
 import { getPost, getReadingTime } from '../posts.js'
 
 function sectionId(text) {
@@ -112,11 +113,8 @@ export default function Post() {
   if (!post) {
     return (
       <article className="page">
-        <p className="kicker">Missing</p>
+        <BackLink to="/blog" label="Back to Blog" />
         <h1>No post with that name.</h1>
-        <p>
-          <Link to="/blog">Back to the blog</Link>
-        </p>
       </article>
     )
   }
@@ -126,9 +124,7 @@ export default function Post() {
   return (
     <article className="page post-body" ref={articleRef}>
       <div className="reading-progress" ref={progressRef} aria-hidden="true" />
-      <p className="kicker">
-        <Link to="/blog">Blog</Link>
-      </p>
+      <BackLink to="/blog" label="Back to Blog" />
       <h1>{post.title}</h1>
       <div className="post-header-meta">
         <time>{post.date}</time>

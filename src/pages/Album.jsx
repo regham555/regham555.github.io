@@ -1,4 +1,5 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import BackLink from '../BackLink.jsx'
 import { getAlbum } from '../photos.js'
 
 export default function Album() {
@@ -8,20 +9,15 @@ export default function Album() {
   if (!album) {
     return (
       <article className="page">
-        <p className="kicker">Missing</p>
+        <BackLink to="/photos" label="Back to Photography" />
         <h1>No album with that name.</h1>
-        <p>
-          <Link to="/photos">Back to photos</Link>
-        </p>
       </article>
     )
   }
 
   return (
     <article className="page">
-      <p className="kicker">
-        <Link to="/photos">Photography</Link>
-      </p>
+      <BackLink to="/photos" label="Back to Photography" />
       <h1>{album.title}</h1>
       <p className="post-header-meta">
         <time>{album.date}</time>
