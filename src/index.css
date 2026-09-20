@@ -262,10 +262,14 @@ h1 {
 }
 
 .post {
+  display: block;
   padding: 1.35rem;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: color-mix(in srgb, var(--well) 32%, transparent);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
   transition:
     border-color 0.25s ease,
     transform 0.25s ease;
@@ -274,6 +278,11 @@ h1 {
 .post:hover {
   border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
   transform: translateY(-2px);
+}
+
+.post:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .post h2 {
@@ -313,21 +322,8 @@ h1 {
   margin: 0;
 }
 
-.post h2 a {
-  text-decoration: none;
-}
-
 .post > p:not(.post-meta) {
   margin-top: 0.75rem;
-}
-
-.read-link {
-  display: inline-block;
-  margin-top: 0.9rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-decoration: none;
 }
 
 .reading-progress {
