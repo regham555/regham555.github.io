@@ -49,7 +49,7 @@ function Layout() {
               Work
             </NavLink>
             <NavLink to="/photos" className="tab">
-              Photos
+              Photography
             </NavLink>
             <NavLink to="/blog" className="tab">
               Blog

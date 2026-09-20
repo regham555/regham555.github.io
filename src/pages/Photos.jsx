@@ -5,7 +5,7 @@ export default function Photos() {
   return (
     <article className="page">
       <p className="kicker">Personal</p>
-      <h1>Photos</h1>
+      <h1>Photography</h1>
       <p className="lede">Nature, trails, and places.</p>
       <ul className="posts">
         {albums.map((album) => (

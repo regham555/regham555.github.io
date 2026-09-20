@@ -34,7 +34,7 @@ const entries = [
     logo: '/logos/trek.svg',
     note: 'Took time between work and graduate school to hike and travel.',
     href: '/photos',
-    hrefLabel: 'Photos',
+    hrefLabel: 'Photography',
     hideWhen: true,
   },
   {
