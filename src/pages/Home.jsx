@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import Greeting from '../Greeting.jsx'
 import { timeline } from '../timeline.js'
 
@@ -31,10 +32,16 @@ export default function Home() {
           }
         })
       },
-      { threshold: 0.2 },
+      { threshold: 0.05, rootMargin: '0px 0px -8% 0px' },
     )
 
-    items.forEach((item) => observer.observe(item))
+    items.forEach((item) => {
+      if (item.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        item.classList.add('is-visible')
+      } else {
+        observer.observe(item)
+      }
+    })
 
     let frame
     const updateTimeline = () => {
@@ -80,7 +87,7 @@ export default function Home() {
 
   return (
     <article className="intro">
-      <p className="kicker">East Setauket, NY</p>
+      <p className="kicker">Brookhaven, NY</p>
       <h1>
         <Greeting />
       </h1>
@@ -99,7 +106,14 @@ export default function Home() {
         <h2 id="timeline-heading">Experience</h2>
         <ol className="timeline" ref={timelineRef}>
           {timeline.map((item) => (
-            <li key={`${item.company}-${item.role}`} className="timeline-item">
+            <li
+              key={`${item.company}-${item.role}`}
+              className={
+                item.hideWhen
+                  ? 'timeline-item timeline-item--no-when'
+                  : 'timeline-item'
+              }
+            >
               <div className="timeline-mark">
                 <img
                   className="company-logo"
@@ -109,15 +123,24 @@ export default function Home() {
                   height="48"
                 />
               </div>
-              <p className="timeline-when">
-                <time dateTime={item.start}>{item.startLabel}</time>
-                <span aria-hidden="true"> – </span>
-                <time dateTime={item.end}>{item.endLabel}</time>
-              </p>
+              {item.hideWhen ? null : (
+                <p className="timeline-when">
+                  <time dateTime={item.start}>{item.startLabel}</time>
+                  <span aria-hidden="true"> – </span>
+                  <time dateTime={item.end}>{item.endLabel}</time>
+                </p>
+              )}
               <div className="timeline-copy">
                 <h3>{item.role}</h3>
                 <p className="company">{item.company}</p>
                 {item.note && <p>{item.note}</p>}
+                {item.href && (
+                  <p className="timeline-link">
+                    <Link to="/photos/langtang-and-gosaikunda">
+                      {item.hrefLabel}
+                    </Link>
+                  </p>
+                )}
                 {item.stack && (
                   <ul className="stack">
                     {item.stack.map((tool) => (
