@@ -20,7 +20,7 @@ export default function Album() {
   return (
     <article className="page">
       <p className="kicker">
-        <Link to="/photos">Photos</Link>
+        <Link to="/photos">Photography</Link>
       </p>
       <h1>{album.title}</h1>
       <p className="post-header-meta">
