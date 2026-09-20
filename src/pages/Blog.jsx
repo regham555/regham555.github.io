@@ -9,23 +9,20 @@ export default function Blog() {
       <p className="lede">Technical notes from the bench.</p>
       <ul className="posts">
         {posts.map((post) => (
-          <li key={post.slug} className="post">
-            <ul className="post-topics" aria-label="Topics">
-              {post.topics.map((topic) => (
-                <li key={topic}>{topic}</li>
-              ))}
-            </ul>
-            <h2>
-              <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-            </h2>
-            <p className="post-meta">
-              <time>{post.date}</time>
-              <span aria-hidden="true">·</span>
-              <span>{getReadingTime(post)}</span>
-            </p>
-            <p>{post.summary}</p>
-            <Link className="read-link" to={`/blog/${post.slug}`}>
-              Read article <span aria-hidden="true">→</span>
+          <li key={post.slug}>
+            <Link className="post" to={`/blog/${post.slug}`}>
+              <ul className="post-topics" aria-label="Topics">
+                {post.topics.map((topic) => (
+                  <li key={topic}>{topic}</li>
+                ))}
+              </ul>
+              <h2>{post.title}</h2>
+              <p className="post-meta">
+                <time>{post.date}</time>
+                <span aria-hidden="true">·</span>
+                <span>{getReadingTime(post)}</span>
+              </p>
+              <p>{post.summary}</p>
             </Link>
           </li>
         ))}
