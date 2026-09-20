@@ -115,24 +115,53 @@ export default function Home() {
               }
             >
               <div className="timeline-mark">
-                <img
-                  className="company-logo"
-                  src={item.logo}
-                  alt=""
-                  width="48"
-                  height="48"
-                />
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={item.company}
+                  >
+                    <img
+                      className="company-logo"
+                      src={item.logo}
+                      alt=""
+                      width="48"
+                      height="48"
+                    />
+                  </a>
+                ) : (
+                  <img
+                    className="company-logo"
+                    src={item.logo}
+                    alt=""
+                    width="48"
+                    height="48"
+                  />
+                )}
               </div>
               {item.hideWhen ? null : (
                 <p className="timeline-when">
                   <time dateTime={item.start}>{item.startLabel}</time>
                   <span aria-hidden="true"> – </span>
-                  <time dateTime={item.end}>{item.endLabel}</time>
+                  {item.end === 'present' ? (
+                    <span>Present</span>
+                  ) : (
+                    <time dateTime={item.end}>{item.endLabel}</time>
+                  )}
                 </p>
               )}
               <div className="timeline-copy">
                 <h3>{item.role}</h3>
-                <p className="company">{item.company}</p>
+                <p className="company">
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noreferrer">
+                      {item.company}
+                    </a>
+                  ) : (
+                    item.company
+                  )}
+                </p>
                 {item.note && <p>{item.note}</p>}
                 {item.href && (
                   <p className="timeline-link">

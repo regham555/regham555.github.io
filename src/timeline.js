@@ -14,6 +14,7 @@ const MONTHS = [
 ]
 
 function label(value) {
+  if (value === 'present') return 'Present'
   const [year, month] = value.split('-')
   return `${MONTHS[Number(month) - 1]} ${year}`
 }
@@ -23,8 +24,9 @@ const entries = [
     company: 'Stony Brook University',
     role: 'M.S., AI Engineering',
     start: '2026-08',
-    end: '2027-12',
+    end: 'present',
     logo: '/logos/sbu.png',
+    url: 'https://www.stonybrook.edu/',
   },
   {
     company: 'Career break',
@@ -45,6 +47,7 @@ const entries = [
     logo: '/logos/outlier.svg',
     note: 'Scored and corrected model outputs against accuracy criteria, reducing error rates.',
     stack: ['RLHF', 'Model evaluation'],
+    url: 'https://outlier.ai/',
   },
   {
     company: 'Alfa Insurance',
@@ -54,6 +57,7 @@ const entries = [
     logo: '/logos/alfa.png',
     note: 'Replaced a legacy batch process with a real-time streaming pipeline.',
     stack: ['Kafka Streams', 'Microservices', 'CI/CD'],
+    url: 'https://www.alfainsurance.com/',
   },
   {
     company: 'Microsoft TEALS',
@@ -63,6 +67,7 @@ const entries = [
     logo: '/logos/microsoft.png',
     note: 'Taught intro computer science to 70+ high school students through project-based learning.',
     stack: ['Python', 'Snap'],
+    url: 'https://www.microsoft.com/en-us/teals',
   },
   {
     company: 'FIS Global',
@@ -72,6 +77,7 @@ const entries = [
     logo: '/logos/fis.png',
     note: 'Built REST APIs serving over a million users on banking platforms.',
     stack: ['Java', 'Spring Boot', 'Angular', 'OAuth/SAML'],
+    url: 'https://www.fisglobal.com/',
   },
   {
     company: 'HCLTech',
@@ -81,6 +87,7 @@ const entries = [
     logo: '/logos/hcltech.jpg',
     note: 'Built an internal tool that automated IBM mainframe EBCDIC-to-ASCII file conversion.',
     stack: ['Spring Boot', 'Angular', 'REST APIs'],
+    url: 'https://www.hcltech.com/',
   },
   {
     company: 'Alabama State University',
@@ -90,6 +97,7 @@ const entries = [
     logo: '/logos/asu.png',
     note: 'Analyzed three decades of AQI data for trends, and presented the findings as a conference poster.',
     stack: ['Machine learning', 'Tableau', 'R'],
+    url: 'https://www.alasu.edu/',
   },
   {
     company: 'Alabama State University',
@@ -97,6 +105,7 @@ const entries = [
     start: '2018-01',
     end: '2021-05',
     logo: '/logos/asu.png',
+    url: 'https://www.alasu.edu/',
   },
 ]
 
