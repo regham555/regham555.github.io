@@ -15,10 +15,26 @@ export default function Home() {
       '(prefers-reduced-motion: reduce)',
     ).matches
 
+    // End the rail at the last logo instead of letting it run down through the
+    // padding below the final entry.
+    const setLineEnd = () => {
+      const logo = items.at(-1)?.querySelector('.company-logo')
+      if (!logo) return
+      const bounds = element.getBoundingClientRect()
+      const inset = bounds.bottom - logo.getBoundingClientRect().top
+      // Before layout settles this can measure as the full timeline, which
+      // would collapse the rail. Keep the last sane value instead.
+      if (inset <= 0 || inset >= bounds.height) return
+      element.style.setProperty('--timeline-end', `${inset}px`)
+    }
+
+    setLineEnd()
+
     if (reduceMotion) {
       items.forEach((item) => item.classList.add('is-visible'))
       element.style.setProperty('--timeline-progress', '1')
-      return undefined
+      window.addEventListener('resize', setLineEnd)
+      return () => window.removeEventListener('resize', setLineEnd)
     }
 
     element.classList.add('is-enhanced')
@@ -47,12 +63,21 @@ export default function Home() {
     const updateTimeline = () => {
       cancelAnimationFrame(frame)
       frame = requestAnimationFrame(() => {
+        setLineEnd()
         const rect = element.getBoundingClientRect()
         const marker = window.innerHeight * 0.55
-        const progress = Math.min(
-          1,
-          Math.max(0, (marker - rect.top) / rect.height),
+        const maxScroll = Math.max(
+          0,
+          document.documentElement.scrollHeight - window.innerHeight,
         )
+        // The line fills between the scroll positions where the timeline's top
+        // and bottom pass the marker. The bottom sits too close to the end of
+        // the page to ever reach the marker, so stop at the last scrollable
+        // pixel instead and let the fill complete there.
+        const from = window.scrollY + rect.top - marker
+        const to = Math.min(from + rect.height, maxScroll)
+        const span = Math.max(1, to - from)
+        const progress = Math.min(1, Math.max(0, (window.scrollY - from) / span))
         element.style.setProperty('--timeline-progress', progress)
 
         let nearest

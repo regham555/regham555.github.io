@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const projects = [
   {
@@ -9,6 +9,11 @@ const projects = [
     date: 'Sep 2026 – Present',
     codeUrl: 'https://github.com/regham555?tab=repositories',
     tone: 'ai',
+    plan: [
+      'Write the evaluation criteria before the model, so results stay measurable.',
+      'Train a baseline first, then improve against a fixed held-out set.',
+      'Report failure cases next to the accuracy numbers.',
+    ],
   },
   {
     title: 'SystemVerilog 2D Convolution Project',
@@ -18,6 +23,11 @@ const projects = [
     date: 'Starts Oct 2026',
     codeUrl: 'https://github.com/regham555?tab=repositories',
     tone: 'systems',
+    plan: [
+      'Parameterise kernel size and data width instead of fixing a 3x3 filter.',
+      'Check the engine against a software reference model.',
+      'Record timing and resource usage after synthesis.',
+    ],
   },
   {
     title: 'Data Engineering Project',
@@ -27,11 +37,32 @@ const projects = [
     date: 'Scheduled 2027',
     codeUrl: 'https://github.com/regham555?tab=repositories',
     tone: 'data',
+    plan: [
+      'Validate raw data before anything downstream is allowed to read it.',
+      'Keep every run reproducible from a clean checkout.',
+      'Fail loudly on schema drift rather than dropping rows quietly.',
+    ],
   },
 ]
 
+function panelId(title) {
+  return `plan-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+}
+
 export default function Projects() {
   const gridRef = useRef(null)
+  const [expanded, setExpanded] = useState(() => new Set())
+
+  const toggle = (title) =>
+    setExpanded((current) => {
+      const next = new Set(current)
+      if (next.has(title)) {
+        next.delete(title)
+      } else {
+        next.add(title)
+      }
+      return next
+    })
 
   useEffect(() => {
     const grid = gridRef.current
@@ -100,11 +131,27 @@ export default function Projects() {
               ))}
             </ul>
             <div className="project-actions" aria-label="Project links">
-              <span aria-disabled="true">Live demo soon</span>
+              <button
+                type="button"
+                className="project-toggle"
+                aria-expanded={expanded.has(project.title)}
+                aria-controls={panelId(project.title)}
+                onClick={() => toggle(project.title)}
+              >
+                <span className="project-toggle-icon" aria-hidden="true" />
+                {expanded.has(project.title) ? 'Hide scope' : 'Planned scope'}
+              </button>
               <a href={project.codeUrl} target="_blank" rel="noreferrer">
                 Code
               </a>
             </div>
+            {expanded.has(project.title) && (
+              <ul className="project-plan" id={panelId(project.title)}>
+                {project.plan.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ul>
+            )}
           </article>
         ))}
       </div>
