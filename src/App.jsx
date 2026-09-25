@@ -26,7 +26,8 @@ function Layout() {
         return
       }
     }
-    window.scrollTo(0, 0)
+    // Landing on a new page should feel instant even though anchors glide.
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [location.pathname, location.hash])
 
   return (

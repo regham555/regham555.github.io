@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+
+// Roughly the scroll-margin on section headings, so the TOC flips over at the
+// same point an anchor jump parks a heading.
+const READING_MARKER = 150
 import { useParams } from 'react-router-dom'
 import BackLink from '../BackLink.jsx'
 import { getPost, getReadingTime } from '../posts.js'
@@ -88,17 +92,28 @@ export default function Post() {
   const post = getPost(slug)
   const articleRef = useRef(null)
   const progressRef = useRef(null)
+  const [activeSection, setActiveSection] = useState(null)
 
   useEffect(() => {
     const article = articleRef.current
     const progress = progressRef.current
     if (!article || !progress) return undefined
 
+    const headings = [...article.querySelectorAll('.post-content h2')]
+
     const update = () => {
       const start = article.offsetTop
       const distance = Math.max(1, article.offsetHeight - window.innerHeight)
       const value = Math.min(1, Math.max(0, (window.scrollY - start) / distance))
       progress.style.transform = `scaleX(${value})`
+
+      let reached = headings[0]?.id ?? null
+      headings.forEach((heading) => {
+        if (heading.getBoundingClientRect().top <= READING_MARKER) {
+          reached = heading.id
+        }
+      })
+      setActiveSection(reached)
     }
 
     update()
@@ -147,14 +162,18 @@ export default function Post() {
       <nav className="post-toc" aria-label="Article sections">
         <p>In this note</p>
         <ol>
-          {sections.map((section, index) => (
-            <li key={section.text}>
-              <a href={`#${sectionId(section.text)}`}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                {section.text}
-              </a>
-            </li>
-          ))}
+          {sections.map((section, index) => {
+            const id = sectionId(section.text)
+            const isActive = id === activeSection
+            return (
+              <li key={section.text} className={isActive ? 'is-active' : ''}>
+                <a href={`#${id}`} aria-current={isActive ? 'true' : undefined}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  {section.text}
+                </a>
+              </li>
+            )
+          })}
         </ol>
       </nav>
 
