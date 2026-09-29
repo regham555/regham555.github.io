@@ -1064,6 +1064,16 @@ h1 {
   line-height: 1.25;
 }
 
+.timeline-copy h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.timeline-copy h3 a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .timeline-copy .company {
   margin: 0.15rem 0 0.5rem;
   font-size: 0.92rem;
@@ -1198,7 +1208,10 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100vw;
+  height: 100dvh;
   padding: clamp(3.5rem, 9vw, 5rem) clamp(1rem, 10vw, 5.5rem);
+  overflow: hidden;
   background: rgb(8 6 4 / 93%);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -1215,14 +1228,18 @@ h1 {
   display: grid;
   gap: 1rem;
   justify-items: center;
+  min-width: 0;
   max-width: 100%;
   margin: 0;
 }
 
 .lightbox-figure img {
   display: block;
+  width: auto;
+  height: auto;
   max-width: 100%;
-  max-height: 68vh;
+  max-height: min(68vh, 68dvh);
+  min-width: 0;
   border-radius: 10px;
   object-fit: contain;
 }

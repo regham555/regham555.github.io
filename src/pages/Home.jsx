@@ -177,7 +177,15 @@ export default function Home() {
                 </p>
               )}
               <div className="timeline-copy">
-                <h3>{item.role}</h3>
+                <h3>
+                  {item.roleUrl ? (
+                    <a href={item.roleUrl} target="_blank" rel="noreferrer">
+                      {item.role}
+                    </a>
+                  ) : (
+                    item.role
+                  )}
+                </h3>
                 <p className="company">
                   {item.url ? (
                     <a href={item.url} target="_blank" rel="noreferrer">
