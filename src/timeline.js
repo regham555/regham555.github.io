@@ -27,6 +27,8 @@ const entries = [
     end: 'present',
     logo: '/logos/sbu.png',
     url: 'https://www.stonybrook.edu/',
+    roleUrl:
+      'https://www.stonybrook.edu/electrical/academics/graduate/engineering-in-artificial-intelligence-ms.html',
   },
   {
     company: 'Career break',
@@ -106,6 +108,8 @@ const entries = [
     end: '2021-05',
     logo: '/logos/asu.png',
     url: 'https://www.alasu.edu/',
+    roleUrl:
+      'https://www.alasu.edu/academics/programs-majors/programs/BS-Computer-Science.php',
   },
 ]
 

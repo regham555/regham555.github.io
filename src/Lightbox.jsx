@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 
 // Minimum horizontal travel before a touch drag counts as a swipe.
 const SWIPE_THRESHOLD = 50
@@ -61,7 +62,7 @@ export default function Lightbox({ photos, index, onClose, onNavigate }) {
     })
   }, [hasSiblings, index, photos])
 
-  return (
+  return createPortal(
     <div
       className="lightbox"
       role="dialog"
@@ -131,6 +132,7 @@ export default function Lightbox({ photos, index, onClose, onNavigate }) {
           </svg>
         </button>
       )}
-    </div>
+    </div>,
+    document.body,
   )
 }

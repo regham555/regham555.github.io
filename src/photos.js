@@ -5,7 +5,7 @@ export const albums = [
     date: 'April 2025',
     topics: ['Nature', 'Nepal'],
     summary:
-      'Langtang Valley, Tserko Ri at 5,000 m, Gosaikunda Lake, and a Himalayan goat on the ridge.',
+      'Sneak peek of 9-day trek from Kathmandu to Langtang and Gosaikunda lake',
     photos: [
       {
         src: '/photos/trek1.jpg',
