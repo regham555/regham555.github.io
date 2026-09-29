@@ -92,6 +92,16 @@ const entries = [
     url: 'https://www.hcltech.com/',
   },
   {
+    company: 'Levi Watkins Learning Center',
+    role: 'Student Assistant (Information Technology)',
+    start: '2020-08',
+    end: '2021-05',
+    logo: '/logos/asu.png',
+    note: 'Troubleshot hardware, software, and network issues in a busy academic computer lab.',
+    stack: ['Hardware', 'Software', 'Networking'],
+    url: 'https://www.lib.alasu.edu/',
+  },
+  {
     company: 'Alabama State University',
     role: 'Student Research Assistant',
     start: '2019-10',
