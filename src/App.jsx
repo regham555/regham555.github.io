@@ -9,8 +9,6 @@ import {
 import ThemeToggle from './ThemeToggle.jsx'
 import Home from './pages/Home.jsx'
 import Projects from './pages/Projects.jsx'
-import Blog from './pages/Blog.jsx'
-import Post from './pages/Post.jsx'
 import Contact from './pages/Contact.jsx'
 import Photos from './pages/Photos.jsx'
 import Album from './pages/Album.jsx'
@@ -52,9 +50,6 @@ function Layout() {
             <NavLink to="/photos" className="tab">
               Photography
             </NavLink>
-            <NavLink to="/blog" className="tab">
-              Blog
-            </NavLink>
             <NavLink to="/contact" className="tab">
               Contact
             </NavLink>
@@ -77,8 +72,6 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<Post />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/photos" element={<Photos />} />
         <Route path="/photos/:slug" element={<Album />} />
