@@ -192,9 +192,14 @@ export default function Home() {
                 {item.note && <p>{item.note}</p>}
                 {item.href && (
                   <p className="timeline-link">
-                    <Link to="/photos/langtang-and-gosaikunda">
-                      {item.hrefLabel}
-                    </Link>
+                    {item.href.startsWith('/') &&
+                    !item.href.toLowerCase().endsWith('.pdf') ? (
+                      <Link to={item.href}>{item.hrefLabel}</Link>
+                    ) : (
+                      <a href={item.href} target="_blank" rel="noreferrer">
+                        {item.hrefLabel}
+                      </a>
+                    )}
                   </p>
                 )}
                 {item.stack && (

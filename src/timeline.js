@@ -37,7 +37,7 @@ const entries = [
     end: '2026-08',
     logo: '/logos/trek.svg',
     note: 'Took time between work and graduate school to hike and travel.',
-    href: '/photos',
+    href: '/photos/langtang-and-gosaikunda',
     hrefLabel: 'Photography',
     hideWhen: true,
   },
@@ -110,6 +110,10 @@ const entries = [
     note: 'Analyzed three decades of AQI data for trends, and presented the findings as a conference poster.',
     stack: ['Machine learning', 'Tableau', 'R'],
     url: 'https://www.alasu.edu/',
+    roleUrl:
+      'https://www.alasu.edu/_qa/minority-science-and-engineering-improvement-program-mseip.php',
+    href: '/ASU_Poster_presentation.pdf',
+    hrefLabel: 'Conference poster',
   },
   {
     company: 'Alabama State University',
