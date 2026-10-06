@@ -116,9 +116,11 @@ export default function Home() {
         <Greeting />
       </h1>
       <p>
-        I care about systems that hold up in production, models that can be
-        evaluated honestly, and explaining technical work to people who
-        don&apos;t live in it every day.
+        I&apos;ve spent my career finding the gap between &ldquo;it works&rdquo;
+        and &ldquo;it actually holds up&rdquo;: in banking systems, data
+        pipelines, and now in AI models, where I try to find exactly where
+        LLMs were confidently wrong. That&apos;s the gap I want to keep
+        closing.
       </p>
 
       <section className="timeline-section" aria-labelledby="timeline-heading">
