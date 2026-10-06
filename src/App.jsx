@@ -58,7 +58,7 @@ function Layout() {
         </div>
       </header>
       <main>
-        <div className="page-frame" key={location.pathname}>
+        <div className="page-frame">
           <Outlet />
         </div>
       </main>

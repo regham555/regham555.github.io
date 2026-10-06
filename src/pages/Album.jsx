@@ -45,9 +45,9 @@ export default function Album() {
                 aria-label={`View ${photo.place} full size`}
               >
                 <img
-                  src={photo.src}
+                  src={photo.thumb}
                   alt={photo.caption || photo.place}
-                  loading="lazy"
+                  loading={index < 2 ? 'eager' : 'lazy'}
                   decoding="async"
                 />
               </button>
