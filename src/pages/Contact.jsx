@@ -23,11 +23,6 @@ export default function Contact() {
 
       <div className="contact-details">
         <section>
-          <p className="detail-label">Location</p>
-          <h2>Brookhaven, New York</h2>
-          <p>Eastern Time (ET)</p>
-        </section>
-        <section>
           <p className="detail-label">Writing</p>
           <h2>
             <a
