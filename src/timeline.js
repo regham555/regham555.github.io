@@ -66,7 +66,7 @@ const entries = [
     role: 'Volunteer Teacher',
     start: '2022-08',
     end: '2023-02',
-    logo: '/logos/microsoft.png',
+    logo: '/logos/teals.svg',
     note: 'Taught intro computer science to 70+ high school students through project-based learning.',
     stack: ['Python', 'Snap'],
     url: 'https://www.microsoft.com/en-us/teals',

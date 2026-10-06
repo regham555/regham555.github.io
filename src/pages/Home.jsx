@@ -112,15 +112,9 @@ export default function Home() {
 
   return (
     <article className="intro">
-      <p className="kicker">Brookhaven, NY</p>
       <h1>
         <Greeting />
       </h1>
-      <p className="lede">
-        Master&apos;s student in AI Engineering at Stony Brook, with nearly
-        three years as a software engineer building data pipelines, APIs, and
-        distributed systems.
-      </p>
       <p>
         I care about systems that hold up in production, models that can be
         evaluated honestly, and explaining technical work to people who
