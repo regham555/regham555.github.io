@@ -1,3 +1,8 @@
+function withThumb(photo) {
+  const file = photo.src.replace(/^\/photos\//, '').replace(/\.jpe?g$/i, '')
+  return { ...photo, thumb: `/photos/thumbs/${file}.webp` }
+}
+
 export const albums = [
   {
     slug: 'langtang-and-gosaikunda',
@@ -121,7 +126,10 @@ export const albums = [
       },
     ],
   },
-]
+].map((album) => ({
+  ...album,
+  photos: album.photos.map(withThumb),
+}))
 
 export function getAlbum(slug) {
   return albums.find((album) => album.slug === slug)

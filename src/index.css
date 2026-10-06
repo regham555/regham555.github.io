@@ -154,17 +154,6 @@ main {
   padding-top: 2.75rem;
 }
 
-.page-frame {
-  animation: page-enter 0.45s ease both;
-}
-
-@keyframes page-enter {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-}
-
 .kicker {
   margin: 0 0 0.75rem;
   font-size: 0.75rem;
@@ -938,6 +927,7 @@ h1 {
 .photo-card img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center;
@@ -1203,10 +1193,6 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .page-frame {
-    animation: none;
   }
 
   .timeline-item,
